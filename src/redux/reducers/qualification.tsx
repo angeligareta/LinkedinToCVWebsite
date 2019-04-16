@@ -1,14 +1,13 @@
 import { REPLACE_QUALIFICATION } from "../constants/index";
+import { qualificationInitialState, qualificationIsError, IQualificationState, IQualificationAction } from "../actions/qualification";
 
-const initialState = {
-  qualification: []
-};
-
-export const qualificationReducer = (state = initialState, action) => {
-  if (action.type === REPLACE_QUALIFICATION) {
+export const qualificationReducer = (state: IQualificationState = qualificationInitialState, action: IQualificationAction): IQualificationState => {
+  if (action.type === REPLACE_QUALIFICATION && action.payload && !qualificationIsError(action.payload)) {
+    let emptyQualification = qualificationInitialState.qualification;
+    
     return {
       ...state,
-      qualification: [].concat(action.payload.qualification)
+      qualification: emptyQualification.concat(action.payload.qualification)
     };
   }
   return state;

@@ -6,8 +6,7 @@ import {
 
 import { INTRODUCTION } from "../../assets/intro";
 
-export function replaceIntroduction(introductionArray): IIntroductionAction {
-  console.log("ADDING");
+export function replaceIntroduction(introductionArray: IIntroductionState["introduction"]): IIntroductionAction {
   return {
     type: REPLACE_INTRODUCTION,
     payload: { introduction: introductionArray }
@@ -26,8 +25,6 @@ export function introductionsFailed(errmess: string): IIntroductionAction {
 }
 
 export function fetchIntroduction() {
-  console.log("DISPATCHING 1");
-
   return function(dispatch) {
     setTimeout(() => {
       dispatch(replaceIntroduction(INTRODUCTION));
