@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 
 /**
  * CSS Syles for Divisor.
  */
-const styles = theme => ({
+const styles = theme => createStyles({
   lineDivision: {
     marginTop: "45px",
     marginBottom: "35px",
@@ -15,12 +15,14 @@ const styles = theme => ({
   }
 });
 
+interface IDivisor extends WithStyles<typeof styles> {}
+
 /**
  * Simple HTML hr divisor customized with CSS.
  * @param param0
  */
-function Divisor({ classes }) {
-  return <hr className={classes.lineDivision} />;
+function Divisor(props: IDivisor) {
+  return <hr className={props.classes.lineDivision} />;
 }
 
 export default withStyles(styles)(Divisor);

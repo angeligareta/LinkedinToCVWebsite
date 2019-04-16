@@ -5,10 +5,9 @@ import {
 } from "../constants";
 
 import { EXPERIENCE } from "../../assets/experience";
+import { Dispatch } from "react";
 
 export function replaceExperience(experienceArray: IExperienceState["experience"]): IExperienceAction {
-  console.log("ADDING EDUCATION");
-
   return {
     type: REPLACE_EXPERIENCE,
     payload: { experience: experienceArray }
@@ -26,10 +25,8 @@ export function experienceFailed(errmess: string): IExperienceAction {
   };
 }
 
-export function fetchExperience() {
-  console.log("DISPATCHING EDUCATION");
-
-  return function(dispatch) {
+export function fetchExperience(): (dispatch: Dispatch<IExperienceAction>) => void {
+  return function(dispatch: Dispatch<IExperienceAction>) {
     setTimeout(() => {
       dispatch(replaceExperience(EXPERIENCE));
     }, 3000);

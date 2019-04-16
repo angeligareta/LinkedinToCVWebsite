@@ -1,9 +1,20 @@
-import * as React from 'react';
-import { Grid, createStyles, Typography, ButtonBase, withStyles } from "@material-ui/core";
+import React from 'react';
+import { Grid, createStyles, Typography, ButtonBase, withStyles, WithStyles } from "@material-ui/core";
 import SectionLayout from "../components/SectionLayout";
 
 // TODO: Change to store
 import { LATEST_PROJECTS } from "../assets/latest-projects";
+
+/**
+ * Structure of a project contained in LATEST_PROJECTS variable.
+ */
+export interface IProject {
+  url: string;
+  imageSrc: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
 
 /**
  * CSS Syles for Portfolio.
@@ -87,16 +98,7 @@ const styles = theme => createStyles({
   }
 });
 
-/**
- * Structure of a project contained in LATEST_PROJECTS variable.
- */
-export interface IProject {
-  url: string;
-  imageSrc: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
+interface IPortfolio extends WithStyles<typeof styles> {}
 
 /**
  * Component that renders all the Latest projects of the portfolio,
@@ -106,31 +108,30 @@ export interface IProject {
  *
  * @param param0
  */
-function ProjectsView({ classes }) {
+function ProjectsView(props: IPortfolio) {
   const latestProjects = LATEST_PROJECTS.map((latestProject: IProject) => (
     <Grid item lg={5} md={5} sm={8} xs={10}>
       <ButtonBase
         focusRipple
         key={latestProject.title}
-        className={classes.imageWrapper}
-        focusVisibleClassName={classes.focusVisible}
+        className={props.classes.imageWrapper}
       >
         <span
-          className={classes.imageSrc}
+          className={props.classes.imageSrc}
           style={{
             backgroundImage: `url(${latestProject.imageSrc})`
           }}
         />
-        <span className={classes.imageBackdrop} />
-        <span className={classes.imageButton}>
+        <span className={props.classes.imageBackdrop} />
+        <span className={props.classes.imageButton}>
           <Typography
             component="span"
             variant="subtitle1"
             color="inherit"
-            className={classes.imageTitle}
+            className={props.classes.imageTitle}
           >
             {latestProject.title}
-            <span className={classes.imageMarked} />
+            <span className={props.classes.imageMarked} />
           </Typography>
         </span>
       </ButtonBase>
@@ -140,7 +141,7 @@ function ProjectsView({ classes }) {
   return (
     <Grid
       container
-      className={classes.root}
+      className={props.classes.root}
       alignItems="center"
       justify="center"
     >
@@ -155,7 +156,7 @@ function ProjectsView({ classes }) {
  *
  * @param param0
  */
-function Portfolio({ classes }) {
+function Portfolio(props: IPortfolio) {
   return (
     <SectionLayout
       sectionId="works"
@@ -167,11 +168,9 @@ function Portfolio({ classes }) {
             Github repository."
       style="secondary"
     >
-      <ProjectsView classes={classes} />
+      <ProjectsView classes={props.classes} />
     </SectionLayout>
   );
 }
-
-
 
 export default withStyles(styles)(Portfolio);

@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Avatar, Grid, Typography, withStyles } from "@material-ui/core";
+import { Avatar, Grid, Typography, withStyles, createStyles, WithStyles } from "@material-ui/core";
 
-import { USER_DATA } from "../assets/store";
+import { USER_DATA } from "../assets/store"; // TODO: Change
 
 import SubSectionLayout from "../components/SubSectionLayout";
+import { IState } from '../redux/store';
 
 /**
  * CSS Syles for Portfolio.
  */
-const styles = theme => ({
+const styles = theme => createStyles({
   avatar: {
     margin: 10,
     width: 250,
@@ -17,16 +18,18 @@ const styles = theme => ({
   }
 });
 
+interface IIntroduction extends WithStyles<typeof styles> {
+  introduction: IState["introduction"]
+}
+
 /**
  * Main component that renders a grid container with two text blocks at the left
  * and a subcomponent skills at the right.
  *
  * @param param0
  */
-function Introduction({ classes, introduction }) {
-  console.log(introduction);
-
-  let introText = introduction.introduction.map((introParagraph) => (
+function Introduction(props: IIntroduction) {
+  let introText = props.introduction.introduction.map((introParagraph) => (
       <Typography variant="body1">{introParagraph}</Typography>
   ));
 
@@ -35,7 +38,7 @@ function Introduction({ classes, introduction }) {
       <Avatar
         alt={USER_DATA.userName}
         src={USER_DATA.avatarImage}
-        className={classes.avatar}
+        className={props.classes.avatar}
       />
       <div>{introText}</div>
     </SubSectionLayout>

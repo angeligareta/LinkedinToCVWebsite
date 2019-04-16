@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import { Typography, WithStyles } from "@material-ui/core";
 import indigo from "@material-ui/core/colors/indigo";
 
 import { USER_DATA } from "../assets/store";
@@ -22,18 +22,19 @@ const styles = theme => ({
   }
 });
 
+interface IFooter extends WithStyles<typeof styles> {}
 /**
  * Simple footer with two text boxes inside.
  *
  * @param param0
  */
-function AppFooter({ classes }) {
+function Footer(props: IFooter) {
   return (
-    <section className={classes.footer}>
+    <section className={props.classes.footer}>
       <Typography
         variant="h6"
         align="center"
-        className={classes.footerTitle}
+        className={props.classes.footerTitle}
         gutterBottom
       >
         SOCIAL NETWORKS
@@ -41,7 +42,7 @@ function AppFooter({ classes }) {
       <Typography
         variant="subtitle1"
         align="center"
-        className={classes.footerSubtitle}
+        className={props.classes.footerSubTitle}
       >
         Copyright © 2019 {USER_DATA.userName}
       </Typography>
@@ -49,4 +50,4 @@ function AppFooter({ classes }) {
   );
 }
 
-export default withStyles(styles)(AppFooter);
+export default withStyles(styles)(Footer);

@@ -8,17 +8,19 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  withStyles
+  withStyles,
+  createStyles,
+  WithStyles
 } from "@material-ui/core";
 
 import BulletPoint from "@material-ui/icons/ArrowRight";
-
 import SubSectionLayout from "../components/SubSectionLayout";
-import { EXPERIENCE } from "../assets/experience";
+import { IState } from '../redux/store';
+
 /**
  * CSS Syles for Portfolio.
  */
-const styles = theme => ({
+const styles = theme => createStyles({
   card: {
     marginBottom: "20px",
     width: "75%",
@@ -32,15 +34,19 @@ const styles = theme => ({
   }
 });
 
+interface IExperience extends WithStyles<typeof styles> {
+  experience: IState["experience"]
+}
+
 /**
  * Main component that renders a grid container with two text blocks at the left
  * and a subcomponent skills at the right.
  *
  * @param param0
  */
-function Experience({ classes, experience }) {
-  let experienceCards = experience.experience.map(experienceObject => (
-    <Card raised className={classes.card}>
+function Experience(props: IExperience) {
+  let experienceCards = props.experience.experience.map(experienceObject => (
+    <Card raised className={props.classes.card}>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           {experienceObject.startDate + " - "}
@@ -52,9 +58,9 @@ function Experience({ classes, experience }) {
           {experienceObject.facts.map(fact => (
             <ListItem>
               <ListItemIcon>
-                <BulletPoint className={classes.bulletPoint} />
+                <BulletPoint className={props.classes.bulletPoint} />
               </ListItemIcon>
-              <ListItemText className={classes.cardText}>{fact}</ListItemText>
+              <ListItemText className={props.classes.cardText}>{fact}</ListItemText>
             </ListItem>
           ))}
         </List>

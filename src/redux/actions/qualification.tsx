@@ -5,6 +5,7 @@ import {
 } from "../constants/index";
 
 import { QUALIFICATION } from "../../assets/qualifications";
+import { Dispatch } from "react";
 
 export function replaceQualification(qualificationArray: IQualificationState["qualification"]): IQualificationAction {
   return {
@@ -26,8 +27,8 @@ export function qualificationFailed(errmess): IQualificationAction {
   };
 }
 
-export function fetchQualifications() {
-  return function(dispatch) {
+export function fetchQualifications(): (dispatch: Dispatch<IQualificationAction>) => void {
+  return function(dispatch: Dispatch<IQualificationAction>): void {
     setTimeout(() => {
       dispatch(replaceQualification(QUALIFICATION));
     }, 3000);

@@ -5,6 +5,7 @@ import {
 } from "../constants/index";
 
 import { INTRODUCTION } from "../../assets/intro";
+import { Dispatch } from "react";
 
 export function replaceIntroduction(introductionArray: IIntroductionState["introduction"]): IIntroductionAction {
   return {
@@ -24,8 +25,8 @@ export function introductionsFailed(errmess: string): IIntroductionAction {
   };
 }
 
-export function fetchIntroduction() {
-  return function(dispatch) {
+export function fetchIntroduction(): (dispatch: Dispatch<IIntroductionAction>) => void {
+  return function(dispatch: Dispatch<IIntroductionAction>) {
     setTimeout(() => {
       dispatch(replaceIntroduction(INTRODUCTION));
     }, 3000);

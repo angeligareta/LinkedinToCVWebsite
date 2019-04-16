@@ -1,7 +1,5 @@
 import * as React from 'react';
-import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography, Grid, Button, Fade, Grow, createStyles } from "@material-ui/core";
+import { Typography, Grid, Button, Fade, Grow, createStyles, withStyles, WithStyles } from "@material-ui/core";
 import { ABOUT_SECTION_TAG, PROJECT_SECTION_TAG } from "../assets/store";
 
 import { USER_DATA } from "../assets/store";
@@ -47,17 +45,19 @@ const styles = theme => createStyles({
   }
 });
 
+interface IBanner extends WithStyles<typeof styles> {}
+
 /**
  * Contains two titles at the left and two buttons at the right,
  * all organized with Grid containers.
  *
  * @param props
  */
-function Banner({ classes }) {
+function Banner(props: IBanner) {
   return (
     <section
       id="banner"
-      className={classNames(classes.banner, classes.backdrop)}
+      className={props.classes.banner}
     >
       <Grid container justify="flex-start" alignItems="flex-start">
         <Grid item xs={1} />
@@ -68,7 +68,7 @@ function Banner({ classes }) {
                 <Typography
                   color="inherit"
                   variant="h2"
-                  className={classes.bannerTitle}
+                  className={props.classes.bannerTitle}
                 >
                   I am {userName}.
                 </Typography>
@@ -79,7 +79,7 @@ function Banner({ classes }) {
                 <Typography
                   color="inherit"
                   variant="h2"
-                  className={classes.bannerSubTitle}
+                  className={props.classes.bannerSubTitle}
                 >
                   I am a {userPosition}.
                 </Typography>
@@ -87,7 +87,7 @@ function Banner({ classes }) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item className={classes.buttons} xs>
+        <Grid item className={props.classes.buttons} xs>
           <Grid
             container
             direction="column"
@@ -98,7 +98,7 @@ function Banner({ classes }) {
               <Button
                 variant="outlined"
                 color="inherit"
-                className={classes.button}
+                className={props.classes.button}
                 href={"#" + PROJECT_SECTION_TAG}
               >
                 LATEST PROJECTS
@@ -108,7 +108,7 @@ function Banner({ classes }) {
               <Button
                 variant="outlined"
                 color="inherit"
-                className={classes.button}
+                className={props.classes.button}
                 href={"#" + ABOUT_SECTION_TAG}
               >
                 MORE ABOUT ME

@@ -1,19 +1,23 @@
 import * as React from 'react';
-import { Grid, Typography, withStyles } from "@material-ui/core";
+import { Grid, Typography, withStyles, createStyles, WithStyles } from "@material-ui/core";
 
 import SubSectionLayout from "../components/SubSectionLayout";
 
 /**
  * CSS Syles for Portfolio.
  */
-const styles = theme => ({});
+const styles = theme => createStyles({
+
+});
+
+interface ISkills extends WithStyles<typeof styles> {}
 
 /**
  * TODO
  *
  * @param param0
  */
-function Skills() {
+function Skills(props: ISkills) {
   return (
     <SubSectionLayout>
       <Grid container spacing={40}>

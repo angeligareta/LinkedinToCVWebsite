@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { connect } from "react-redux";
 
@@ -11,10 +11,11 @@ import Portfolio from "./views/Portfolio";
 import { fetchIntroduction } from "./redux/actions/intro";
 import { fetchQualifications } from "./redux/actions/qualification";
 import { fetchEducation } from "./redux/actions/education";
-import {fetchExperience} from "./redux/actions/experience";
+import { fetchExperience } from "./redux/actions/experience";
 
+import { IState, IStateDispatch } from "./redux/store";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: IState): IState => {
     return {
         introduction: state.introduction,
         qualification: state.qualification,
@@ -23,7 +24,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch): IStateDispatch => ({
     fetchIntroduction: () => {
         dispatch(fetchIntroduction());
     },
@@ -38,9 +39,9 @@ const mapDispatchToProps = dispatch => ({
     }
 });
 
+interface IApp extends IStateDispatch, IState {}
 
-
-function App(props: any) {
+function App(props: IApp) {
     // Similar to componentDidMount and componentDidUpdate:
     React.useEffect(() => {
         props.fetchIntroduction();
@@ -55,10 +56,10 @@ function App(props: any) {
             <Header />
             <Banner />
             <About
-                introduction={props.introduction}
-                qualification={props.qualification}
-                education={props.education}
-                experience={props.experience}
+                introduction = {props.introduction}
+                qualification = {props.qualification}
+                education = {props.education}
+                experience = {props.experience}
             />
             <Portfolio />
             <Footer />

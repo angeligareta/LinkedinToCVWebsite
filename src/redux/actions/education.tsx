@@ -5,10 +5,9 @@ import {
 } from "../constants";
 
 import { EDUCATION } from "../../assets/education";
+import { Dispatch } from "react";
 
 export function replaceEducation(educationArray: IEducationState["education"]): IEducationAction {
-  console.log("ADDING EDUCATION");
-
   return {
     type: REPLACE_EDUCATION,
     payload: { education: educationArray }
@@ -26,10 +25,8 @@ export function educationFailed(errmess: string): IEducationAction {
   };
 }
 
-export function fetchEducation() {
-  console.log("DISPATCHING EDUCATION");
-
-  return function(dispatch) {
+export function fetchEducation(): (dispatch: Dispatch<IEducationAction>) => void {
+  return function(dispatch: Dispatch<IEducationAction>) {
     setTimeout(() => {
       dispatch(replaceEducation(EDUCATION));
     }, 3000);
