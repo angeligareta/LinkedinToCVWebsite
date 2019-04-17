@@ -17,6 +17,11 @@ import { IExperienceState } from "../actions/experience";
 import { IPortfolioState } from "../actions/portfolio";
 import { IUserDataState } from "../actions/userData";
 
+/**
+ * Structure of the Application's State. For each field in this object, 
+ * there is one associated data structure of the substate type, in order 
+ * to be consistent when the state is used in the application. 
+ */
 export interface IState {
   introduction: IIntroductionState,
   qualification: IQualificationState,
@@ -26,6 +31,9 @@ export interface IState {
   userData: IUserDataState
 }
 
+/**
+ * Structure of the Dispatch events that our app can trigger.
+ */
 export interface IStateDispatch {
   fetchIntroduction: () => void,
   fetchQualifications: () => void,
@@ -35,9 +43,14 @@ export interface IStateDispatch {
   fetchUserData: () => void
 }
 
+/**
+ * Store that combines the reducers created in separated files (best practice).
+ * Besides, it uses two middlewares:
+ *  - Thunk Middleware: In order to have more control when an action is dispatched.
+ *  - Redux Logger: Very useful to see all the updates of the app state in the console.
+ */
 const store = createStore(
   combineReducers({
-    // IMPORTANT: Create object for combining reducers
     introduction: introductionReducer,
     qualification: qualificationReducer,
     education: educationReducer,

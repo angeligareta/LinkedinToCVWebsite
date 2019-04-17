@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Grid, createStyles, WithStyles, Typography, withStyles } from "@material-ui/core";
-import { red, teal, lightBlue } from "@material-ui/core/colors";
+import { red, lightBlue } from "@material-ui/core/colors";
 
 import Divisor from "../components/Divisor";
 
@@ -39,8 +39,9 @@ interface ISectionLayout extends WithStyles<typeof styles>{
 
 /**
  * Common layout for all sections. It renders a title, subtitle and optionally a section description.
- * Besides, it has different themes that the user can choose with styles attribute.
- * @param param0
+ * Besides, it has different themes (default and secondary) that the user can choose with styles attribute.
+ * 
+ * @param props
  */
 function SectionLayout(props: ISectionLayout) {
   let backgroundColor;
@@ -48,15 +49,6 @@ function SectionLayout(props: ISectionLayout) {
     case "secondary":
       backgroundColor = lightBlue[50];
       break;
-  }
-
-  let sectionDescription;
-  if (props.sectionDesc) {
-    sectionDescription = (
-      <Grid item lg={6} md={8} xs={10}>
-        <Typography className={props.classes.sectionDesc}>{props.sectionDesc}</Typography>
-      </Grid>
-    );
   }
 
   return (
@@ -75,7 +67,11 @@ function SectionLayout(props: ISectionLayout) {
         <Typography className={props.classes.sectionSubTitle} variant="h3">
           {props.sectionSubtitle}
         </Typography>
-        {sectionDescription}
+        {props.sectionDesc && 
+          <Grid item lg={6} md={8} xs={10}>
+            <Typography className={props.classes.sectionDesc}>{props.sectionDesc}</Typography>
+          </Grid>
+        }
         <Divisor />
         {props.children}
       </Grid>

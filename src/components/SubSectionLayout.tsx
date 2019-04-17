@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Grid, withStyles, createStyles, Typography, WithStyles } from "@material-ui/core";
 
 /**

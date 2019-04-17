@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 
 /**
@@ -19,7 +19,7 @@ interface IDivisor extends WithStyles<typeof styles> {}
 
 /**
  * Simple HTML hr divisor customized with CSS.
- * @param param0
+ * @param props
  */
 function Divisor(props: IDivisor) {
   return <hr className={props.classes.lineDivision} />;

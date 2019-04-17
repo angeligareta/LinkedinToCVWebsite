@@ -1,3 +1,15 @@
+/**
+ * UserData Action Creator
+ * 
+ * This file contains the action creators for the main actions that the UserData reducer can receive. Besides,
+ * it includes the initial state for userData state and the interfaces for both the userData state and the userData action.
+ * 
+ * It has four types:
+ *  - replaceUserData: Sends an action with a new userData array received and updates the loading state flag to false.
+ *  - userDataLoading: Sends an action with the initial state and the loading state flag to true.
+ *  - userDataFailed: Sends an action with an error message received and updates the loading state to false.
+ *  - fetchEducation: Thunk action that dispatches the userDataLoading action and it fetches the userData information.
+ */
 import {
   REPLACE_USER_DATA,
   USER_DATA_LOADING,

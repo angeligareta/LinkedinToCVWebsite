@@ -1,3 +1,15 @@
+/**
+ * Education Action Creator
+ * 
+ * This file contains the action creators for the main actions that the Education reducer can receive. Besides,
+ * it includes the initial state for education state and the interfaces for both the education state and the education action.
+ * 
+ * It has four types:
+ *  - replaceEducation: Sends an action with a new education array received and updates the loading state flag to false.
+ *  - educationLoading: Sends an action with the initial state and the loading state flag to true.
+ *  - educationFailed: Sends an action with an error message received and updates the loading state to false.
+ *  - fetchEducation: Thunk action that dispatches the educationLoading action and it fetches the education information.
+ */
 import {
   REPLACE_EDUCATION,
   EDUCATION_LOADING,

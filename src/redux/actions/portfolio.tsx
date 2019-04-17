@@ -1,3 +1,15 @@
+/**
+ * Portfolio Action Creator
+ * 
+ * This file contains the action creators for the main actions that the Portfolio reducer can receive. Besides,
+ * it includes the initial state for portfolio state and the interfaces for both the portfolio state and the portfolio action.
+ * 
+ * It has four types:
+ *  - replacePortfolio: Sends an action with a new portfolio array received and updates the loading state flag to false.
+ *  - portfolioLoading: Sends an action with the initial state and the loading state flag to true.
+ *  - portfolioFailed: Sends an action with an error message received and updates the loading state to false.
+ *  - fetchEducation: Thunk action that dispatches the portfolioLoading action and it fetches the portfolio information.
+ */
 import {
   REPLACE_PORTFOLIO,
   PORTFOLIO_LOADING,

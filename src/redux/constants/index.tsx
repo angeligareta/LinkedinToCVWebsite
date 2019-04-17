@@ -1,3 +1,10 @@
+/**
+ * File that contains all the constant strings that the project use. If you were to use
+ * a value in more than one place in the program, this is the place to add that value and 
+ * use the reference instead. 
+ * 
+ * It includes the Action Types, it is best practice to use constant strings to indicate it.
+ */
 export const REPLACE_INTRODUCTION: string = "REPLACE_INTRODUCTION";
 export const INTRODUCTION_LOADING: string = "INTRODUCTION_LOADING";
 export const INTRODUCTION_FAILED: string = "INTRODUCTION_FAILED";
