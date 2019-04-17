@@ -1,17 +1,28 @@
-import { REPLACE_INTRODUCTION} from "../constants/index";
-import { introductionInitialState, introductionIsError, IIntroductionState, IIntroductionAction } from "../actions/introduction";
+import { REPLACE_INTRODUCTION, INTRODUCTION_LOADING, INTRODUCTION_FAILED } from "../constants/index";
+import { introductionInitialState, IIntroductionState, IIntroductionAction } from "../actions/introduction";
 
 export const introductionReducer = (state: IIntroductionState = introductionInitialState, action: IIntroductionAction): IIntroductionState => {
-  if (action.type === REPLACE_INTRODUCTION && action.payload && !introductionIsError(action.payload)) {
-    let emtpyIntroduction = introductionInitialState.introduction;
-    
-    return {
-      ...state,
-      introduction: emtpyIntroduction.concat(action.payload.introduction)
-    };
+  let emptyExperience = introductionInitialState.introduction;
+
+  switch (action.type) {
+    case REPLACE_INTRODUCTION: 
+      return {
+        ...state,
+        introduction: emptyExperience.concat(action.payload.introduction),
+        isLoading: false
+      };
+    case INTRODUCTION_LOADING:
+      return { 
+        ...introductionInitialState
+      };
+    case INTRODUCTION_FAILED:
+      return {
+        ...state,
+        introduction: emptyExperience,
+        isLoading: false,
+        errMess: action.payload.errMess
+      }
+    default:
+      return state;
   }
-  else {
-    console.log(action.type + " NOT DEFINED ACTION");
-  }  
-  return state;
 }

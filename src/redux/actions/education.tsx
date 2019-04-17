@@ -10,23 +10,28 @@ import { Dispatch } from "react";
 export function replaceEducation(educationArray: IEducationState["education"]): IEducationAction {
   return {
     type: REPLACE_EDUCATION,
-    payload: { education: educationArray }
+    payload: { ...educationInitialState, isLoading: false, education: educationArray }
   };
 }
 
 export function educationLoading(): IEducationAction {
-  return { type: EDUCATION_LOADING };
+  return { 
+    type: EDUCATION_LOADING,
+    payload: { ...educationInitialState } 
+  };
 }
 
-export function educationFailed(errmess: string): IEducationAction {
+export function educationFailed(errMess: string): IEducationAction {
   return {
     type: EDUCATION_FAILED,
-    payload: errmess
+    payload: { ...educationInitialState, isLoading: false, errMess: errMess }
   };
 }
 
 export function fetchEducation(): (dispatch: Dispatch<IEducationAction>) => void {
   return function(dispatch: Dispatch<IEducationAction>) {
+    dispatch(educationLoading())
+
     setTimeout(() => {
       dispatch(replaceEducation(EDUCATION));
     }, 3000);
@@ -34,18 +39,18 @@ export function fetchEducation(): (dispatch: Dispatch<IEducationAction>) => void
 }
 
 export interface IEducationState {
-  education: Array<any>
+  education: Array<any>,
+  isLoading: boolean,
+  errMess: string | null
 } 
 
 export interface IEducationAction {
   type: string,
-  payload?: IEducationState | string
+  payload: IEducationState
 }
 
 export const educationInitialState: IEducationState = {
-  education: []
-}
-
-export function educationIsError(payload: IEducationAction["payload"]): payload is string {
-  return (payload instanceof String);
+  education: [],
+  isLoading: true,
+  errMess: null
 }

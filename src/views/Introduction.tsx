@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Grid, Typography, withStyles, createStyles, WithStyles } from "@material-ui/core";
+import { Avatar, Grid, Typography, withStyles, createStyles, WithStyles, CircularProgress } from "@material-ui/core";
 
 import { USER_DATA } from "../assets/store"; // TODO: Change
 
@@ -37,14 +37,24 @@ function Introduction(props: IIntroduction) {
   ));
 
   return (
-    <SubSectionLayout>
-      <Avatar
-        alt={USER_DATA.userName}
-        src={USER_DATA.avatarImage}
-        className={props.classes.avatar}
-      />
-      <div>{introText}</div>
-    </SubSectionLayout>
+    (props.introduction.isLoading)
+    ?
+      <CircularProgress size={68}/> 
+    :
+      (props.introduction.errMess)
+      ?
+        <Typography variant="h4" color="error">{props.introduction.errMess}</Typography>
+      :
+      <SubSectionLayout>
+        <Avatar
+          alt={USER_DATA.userName}
+          src={USER_DATA.avatarImage}
+          className={props.classes.avatar}
+        />
+        <Grid container direction="column" justify="center" alignItems="center">      
+          {introText}
+        </Grid>
+      </SubSectionLayout>
   );
 }
 

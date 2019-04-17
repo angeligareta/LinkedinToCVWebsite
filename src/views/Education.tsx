@@ -11,7 +11,8 @@ import {
   Typography,
   withStyles,
   WithStyles,
-  createStyles
+  createStyles,
+  CircularProgress
 } from "@material-ui/core";
 
 import BulletPoint from "@material-ui/icons/ArrowRight";
@@ -76,10 +77,19 @@ function Education(props: IEducation) {
       <Grid
         container
         direction="column"
-        justify="flex-start"
-        alignItems="flex-start"
+        justify="center"
+        alignItems="center"
       >
-        {educationCards}
+        {(props.education.isLoading) 
+        ? 
+          <CircularProgress size={68}/> 
+        : 
+          (props.education.errMess)
+          ? 
+            <Typography variant="h4" color="error">{props.education.errMess}</Typography>
+          :
+          <div>{educationCards}</div>
+        }
       </Grid>
     </SubSectionLayout>
   );

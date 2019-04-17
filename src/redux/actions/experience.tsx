@@ -10,7 +10,7 @@ import { Dispatch } from "react";
 export function replaceExperience(experienceArray: IExperienceState["experience"]): IExperienceAction {
   return {
     type: REPLACE_EXPERIENCE,
-    payload: { ...experienceInitialState, experience: experienceArray }
+    payload: { ...experienceInitialState, isLoading: false, experience: experienceArray }
   };
 }
 
@@ -24,7 +24,7 @@ export function experienceLoading(): IExperienceAction {
 export function experienceFailed(errMess: string): IExperienceAction {
   return {
     type: EXPERIENCE_FAILED,
-    payload: { ...experienceInitialState, errMess: errMess }
+    payload: { ...experienceInitialState, isLoading: false, errMess: errMess }
   };
 }
 

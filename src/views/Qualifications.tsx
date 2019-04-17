@@ -7,7 +7,9 @@ import {
   Typography,
   withStyles,
   WithStyles,
-  createStyles
+  createStyles,
+  Grid,
+  CircularProgress
 } from "@material-ui/core";
 
 import BulletPoint from "@material-ui/icons/Star";
@@ -48,7 +50,18 @@ function Qualifications(props: IQualifications) {
 
   return (
     <SubSectionLayout title="My Qualifications.">
-      <List>{qualificationsRender}</List>
+      <Grid container direction="column" justify="center" alignItems="center">
+        {(props.qualification.isLoading) 
+        ? 
+          <CircularProgress size={68}/> 
+        : 
+          (props.qualification.errMess)
+          ? 
+            <Typography variant="h4" color="error">{props.qualification.errMess}</Typography>
+          :
+            <List>{qualificationsRender}</List>
+        }
+      </Grid>    
     </SubSectionLayout>
   );
 }

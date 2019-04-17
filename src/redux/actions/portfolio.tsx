@@ -10,23 +10,28 @@ import { Dispatch } from "react";
 export function replacePortfolio(portfolioArray: IPortfolioState["portfolio"]): IPortfolioAction {
   return {
     type: REPLACE_PORTFOLIO,
-    payload: { portfolio: portfolioArray }
+    payload: { ...portfolioInitialState, isLoading: false, portfolio: portfolioArray }
   };
 }
 
 export function portfolioLoading(): IPortfolioAction {
-  return { type: PORTFOLIO_LOADING };
+  return { 
+    type: PORTFOLIO_LOADING, 
+    payload: { ...portfolioInitialState }
+  };
 }
 
-export function portfolioFailed(errmess: string): IPortfolioAction {
+export function portfolioFailed(errMess: string): IPortfolioAction {
   return {
     type: PORTFOLIO_FAILED,
-    payload: errmess
+    payload: { ...portfolioInitialState, isLoading: false, errMess: errMess }
   };
 }
 
 export function fetchPortfolio(): (dispatch: Dispatch<IPortfolioAction>) => void {
   return function(dispatch: Dispatch<IPortfolioAction>) {
+    dispatch(portfolioLoading())
+
     setTimeout(() => {
       dispatch(replacePortfolio(PORTFOLIO));
     }, 3000);
@@ -34,18 +39,18 @@ export function fetchPortfolio(): (dispatch: Dispatch<IPortfolioAction>) => void
 }
 
 export interface IPortfolioState {
-  portfolio: Array<any>
-} 
+  portfolio: Array<any>,
+  isLoading: boolean,
+  errMess: string | null
+}
 
 export interface IPortfolioAction {
   type: string,
-  payload?: IPortfolioState | string
+  payload: IPortfolioState
 }
 
 export const portfolioInitialState: IPortfolioState = {
-  portfolio: []
-}
-
-export function portfolioIsError(payload: IPortfolioAction["payload"]): payload is string {
-  return (payload instanceof String);
+  portfolio: [],
+  isLoading: true,
+  errMess: null
 }

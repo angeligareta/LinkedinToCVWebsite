@@ -1,14 +1,28 @@
-import { REPLACE_QUALIFICATION } from "../constants/index";
-import { qualificationInitialState, qualificationIsError, IQualificationState, IQualificationAction } from "../actions/qualification";
+import { REPLACE_QUALIFICATION, QUALIFICATION_LOADING, QUALIFICATION_FAILED } from "../constants/index";
+import { qualificationInitialState, IQualificationState, IQualificationAction } from "../actions/qualification";
 
 export const qualificationReducer = (state: IQualificationState = qualificationInitialState, action: IQualificationAction): IQualificationState => {
-  if (action.type === REPLACE_QUALIFICATION && action.payload && !qualificationIsError(action.payload)) {
-    let emptyQualification = qualificationInitialState.qualification;
-    
-    return {
-      ...state,
-      qualification: emptyQualification.concat(action.payload.qualification)
-    };
+  let emptyExperience = qualificationInitialState.qualification;
+
+  switch (action.type) {
+    case REPLACE_QUALIFICATION: 
+      return {
+        ...state,
+        qualification: emptyExperience.concat(action.payload.qualification),
+        isLoading: false,
+      };
+    case QUALIFICATION_LOADING:
+      return { 
+        ...qualificationInitialState
+      };
+    case QUALIFICATION_FAILED:
+      return {
+        ...state,
+        qualification: emptyExperience,
+        isLoading: false,
+        errMess: action.payload.errMess
+      }
+    default:
+      return state;
   }
-  return state;
 };

@@ -10,25 +10,28 @@ import { Dispatch } from "react";
 export function replaceQualification(qualificationArray: IQualificationState["qualification"]): IQualificationAction {
   return {
     type: REPLACE_QUALIFICATION,
-    payload: { qualification: qualificationArray }
+    payload: { ...qualificationInitialState, isLoading: false, qualification: qualificationArray }
   };
 }
 
 export function qualificationLoading(): IQualificationAction {
   return { 
-    type: QUALIFICATION_LOADING 
+    type: QUALIFICATION_LOADING, 
+    payload: { ...qualificationInitialState }
   };
 }
 
-export function qualificationFailed(errmess): IQualificationAction {
+export function qualificationFailed(errMess: string): IQualificationAction {
   return {
     type: QUALIFICATION_FAILED,
-    payload: errmess
+    payload: { ...qualificationInitialState, isLoading: false, errMess: errMess }
   };
 }
 
 export function fetchQualifications(): (dispatch: Dispatch<IQualificationAction>) => void {
   return function(dispatch: Dispatch<IQualificationAction>): void {
+    dispatch(qualificationLoading())
+
     setTimeout(() => {
       dispatch(replaceQualification(QUALIFICATION));
     }, 3000);
@@ -36,18 +39,18 @@ export function fetchQualifications(): (dispatch: Dispatch<IQualificationAction>
 }
 
 export interface IQualificationState {
-  qualification: Array<string>
+  qualification: Array<string>,
+  isLoading: boolean,
+  errMess: string | null
 } 
 
 export interface IQualificationAction {
   type: string,
-  payload?: IQualificationState | string
+  payload: IQualificationState
 }
 
 export const qualificationInitialState: IQualificationState = {
-  qualification: []
-}
-
-export function qualificationIsError(payload: IQualificationAction["payload"]): payload is string {
-  return (payload instanceof String);
+  qualification: [],
+  isLoading: true,
+  errMess: null
 }

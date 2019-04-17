@@ -10,18 +10,21 @@ import { Dispatch } from "react";
 export function replaceIntroduction(introductionArray: IIntroductionState["introduction"]): IIntroductionAction {
   return {
     type: REPLACE_INTRODUCTION,
-    payload: { introduction: introductionArray }
+    payload: { ...introductionInitialState, isLoading: false, introduction: introductionArray }
   };
 }
 
 export function introductionLoading(): IIntroductionAction {
-  return { type: INTRODUCTION_LOADING };
+  return { 
+    type: INTRODUCTION_LOADING, 
+    payload: { ...introductionInitialState }
+  };
 }
 
-export function introductionFailed(errmess: string): IIntroductionAction {
+export function introductionFailed(errMess: string): IIntroductionAction {
   return {
     type: INTRODUCTION_FAILED,
-    payload: errmess
+    payload: { ...introductionInitialState, isLoading: false, errMess: errMess }
   };
 }
 
@@ -36,18 +39,18 @@ export function fetchIntroduction(): (dispatch: Dispatch<IIntroductionAction>) =
 }
 
 export interface IIntroductionState {
-  introduction: Array<string>
+  introduction: Array<string>,
+  isLoading: boolean,
+  errMess: string | null
 } 
 
 export interface IIntroductionAction {
   type: string,
-  payload?: IIntroductionState | string
+  payload: IIntroductionState
 }
 
 export const introductionInitialState: IIntroductionState = {
-  introduction: []
-}
-
-export function introductionIsError(payload: IIntroductionAction["payload"]): payload is string {
-  return (payload instanceof String);
+  introduction: [],
+  isLoading: true,
+  errMess: null
 }

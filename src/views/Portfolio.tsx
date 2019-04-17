@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, createStyles, Typography, ButtonBase, withStyles, WithStyles } from "@material-ui/core";
+import { Grid, createStyles, Typography, ButtonBase, withStyles, WithStyles, CircularProgress } from "@material-ui/core";
 import SectionLayout from "../components/SectionLayout";
 import { IState } from '../redux/store';
 
@@ -168,7 +168,16 @@ function Portfolio(props: IPortfolio) {
             Github repository."
       style="secondary"
     >
-      <ProjectsView {...props} />
+    {(props.portfolio.isLoading) 
+      ? 
+        <CircularProgress size={68}/> 
+      : 
+        (props.portfolio.errMess)
+        ? 
+          <Typography variant="h4" color="error">{props.portfolio.errMess}</Typography>
+        :
+        <ProjectsView {...props} />
+    }      
     </SectionLayout>
   );
 }
