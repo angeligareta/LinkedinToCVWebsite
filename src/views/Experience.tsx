@@ -23,8 +23,8 @@ import { IState } from '../redux/store';
 const styles = theme => createStyles({
   card: {
     marginBottom: "20px",
-    width: "75%",
-    minWidth: "30vw"
+    width: "100%",
+    minWidth: "30vw",
   },
   bulletPoint: {
     marginRight: "0px"

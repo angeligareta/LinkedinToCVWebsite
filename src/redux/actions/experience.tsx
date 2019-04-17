@@ -47,5 +47,5 @@ export const experienceInitialState: IExperienceState = {
 }
 
 export function experienceIsError(payload: IExperienceAction["payload"]): payload is string {
-  return true;
+  return (payload instanceof String);
 }

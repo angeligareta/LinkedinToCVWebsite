@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from "prop-types";
 import { Grid, createStyles, WithStyles, Typography, withStyles } from "@material-ui/core";
 import { red, teal, lightBlue } from "@material-ui/core/colors";
 
@@ -23,7 +22,9 @@ const styles = theme => createStyles({
     color: red[900]
   },
   sectionSubTitle: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    padding: "0px 20px",
+    textAlign: "center"
   }
 });
 

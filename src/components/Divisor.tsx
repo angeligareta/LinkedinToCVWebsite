@@ -7,7 +7,7 @@ import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 const styles = theme => createStyles({
   lineDivision: {
     marginTop: "45px",
-    marginBottom: "35px",
+    marginBottom: "25px",
     width: "27%",
     height: "2px",
     backgroundColor: theme.palette.primary.main,

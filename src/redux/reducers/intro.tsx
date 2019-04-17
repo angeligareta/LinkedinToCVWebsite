@@ -10,5 +10,8 @@ export const introductionReducer = (state: IIntroductionState = introductionInit
       introduction: emtpyIntroduction.concat(action.payload.introduction)
     };
   }
+  else {
+    console.log(action.type + " NOT DEFINED ACTION");
+  }  
   return state;
 }

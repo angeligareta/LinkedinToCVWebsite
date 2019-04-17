@@ -49,5 +49,5 @@ export const qualificationInitialState: IQualificationState = {
 }
 
 export function qualificationIsError(payload: IQualificationAction["payload"]): payload is string {
-  return true;
+  return (payload instanceof String);
 }

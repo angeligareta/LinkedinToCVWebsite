@@ -15,6 +15,9 @@ const styles = theme => createStyles({
     width: 250,
     height: 250,
     boxShadow: "0px 0px 15px -2px"
+  },
+  introText: {
+    paddingBottom: "10px"
   }
 });
 
@@ -30,7 +33,7 @@ interface IIntroduction extends WithStyles<typeof styles> {
  */
 function Introduction(props: IIntroduction) {
   let introText = props.introduction.introduction.map((introParagraph) => (
-      <Typography variant="body1">{introParagraph}</Typography>
+      <Typography className={props.classes.introText}variant="body1">{introParagraph}</Typography>
   ));
 
   return (

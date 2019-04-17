@@ -47,5 +47,5 @@ export const introductionInitialState: IIntroductionState = {
 }
 
 export function introductionIsError(payload: IIntroductionAction["payload"]): payload is string {
-  return true;
+  return (payload instanceof String);
 }

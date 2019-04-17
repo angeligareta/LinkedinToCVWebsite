@@ -48,7 +48,7 @@ function App(props: IApp) {
         props.fetchQualifications();
         props.fetchEducation()
         props.fetchExperience()
-    });
+    }, []);
 
     return (
         <div style={{ minWidth: "min-content" }}>

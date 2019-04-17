@@ -47,5 +47,5 @@ export const educationInitialState: IEducationState = {
 }
 
 export function educationIsError(payload: IEducationAction["payload"]): payload is string {
-  return true;
+  return (payload instanceof String);
 }
