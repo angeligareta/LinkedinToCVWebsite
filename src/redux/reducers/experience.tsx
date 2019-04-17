@@ -1,4 +1,4 @@
-import { REPLACE_EXPERIENCE, EXPERIENCE_LOADING, EXPERIENCE_FAILED, FETCH_ERROR_MESSAGE } from "../constants";
+import { REPLACE_EXPERIENCE, EXPERIENCE_LOADING, EXPERIENCE_FAILED } from "../constants";
 import { experienceInitialState, IExperienceState, IExperienceAction } from "../actions/experience";
 
 export const experienceReducer = (state: IExperienceState = experienceInitialState, action: IExperienceAction): IExperienceState => {

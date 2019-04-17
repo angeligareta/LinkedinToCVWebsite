@@ -2,7 +2,13 @@ import * as React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import { Link, AppBar, Toolbar, Avatar, createStyles, WithStyles } from "@material-ui/core";
 
-import { HEADER_MENU_LINKS } from "../assets/store";
+import { HOME_SECTION_TAG, ABOUT_SECTION_TAG, PROJECT_SECTION_TAG, CONTACT_SECTION_TAG } from '../redux/constants';
+export const HEADER_MENU_LINKS = [
+  HOME_SECTION_TAG,
+  ABOUT_SECTION_TAG,
+  PROJECT_SECTION_TAG,
+  CONTACT_SECTION_TAG
+];
 
 /**
  * CSS Syles for Header.

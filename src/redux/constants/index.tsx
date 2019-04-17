@@ -18,4 +18,11 @@ export const REPLACE_PORTFOLIO: string = "REPLACE_PORTFOLIO";
 export const PORTFOLIO_LOADING: string = "PORTFOLIO_LOADING";
 export const PORTFOLIO_FAILED: string = "PORTFOLIO_FAILED";
 
-export const FETCH_ERROR_MESSAGE: string = "ERROR 404: Content not found."
+export const REPLACE_USER_DATA: string = "REPLACE_USER_DATA";
+export const USER_DATA_LOADING: string = "USER_DATA_LOADING";
+export const USER_DATA_FAILED: string = "USER_DATA_FAILED";
+
+export const HOME_SECTION_TAG = "home";
+export const ABOUT_SECTION_TAG = "about";
+export const PROJECT_SECTION_TAG = "works";
+export const CONTACT_SECTION_TAG = "contact";

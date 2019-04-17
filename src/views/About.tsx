@@ -24,7 +24,8 @@ interface IAbout extends WithStyles<typeof styles> {
   introduction: IState["introduction"],
   qualification: IState["qualification"],
   education: IState["education"],
-  experience: IState["experience"]
+  experience: IState["experience"],
+  userData: IState["userData"]
 }
 
 /**
@@ -41,7 +42,7 @@ function About(props: IAbout) {
       sectionSubtitle="Let me introduce myself"
       style="primary"
     >
-      <Introduction introduction={props.introduction} />
+      <Introduction introduction={props.introduction} userData={props.userData}/>
       <Qualifications qualification={props.qualification} />
       <Education education={props.education}/>
       <Experience experience={props.experience}/>

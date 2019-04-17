@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Typography, Grid, Button, Fade, Grow, createStyles, withStyles, WithStyles } from "@material-ui/core";
-import { ABOUT_SECTION_TAG, PROJECT_SECTION_TAG } from "../assets/store";
-
-import { USER_DATA } from "../assets/store";
-const { backgroundImage, userName, userPosition } = USER_DATA;
+import { PROJECT_SECTION_TAG, ABOUT_SECTION_TAG } from '../redux/constants';
+import { IState } from '../redux/store';
 
 /**
  * CSS styles for Banner
@@ -16,8 +14,7 @@ const styles = theme => createStyles({
     backgroundPosition: "center",
     backgroundSize: "cover",
     minSize: "100%",
-    padding: `${theme.spacing.unit * 15}px 0`,
-    backgroundImage: `url(${backgroundImage})`
+    padding: `${theme.spacing.unit * 15}px 0`    
   },
   bannerTitle: {
     WebkitUserSelect: "none",
@@ -45,7 +42,9 @@ const styles = theme => createStyles({
   }
 });
 
-interface IBanner extends WithStyles<typeof styles> {}
+interface IBanner extends WithStyles<typeof styles> {
+  userData: IState["userData"]
+}
 
 /**
  * Contains two titles at the left and two buttons at the right,
@@ -58,34 +57,37 @@ function Banner(props: IBanner) {
     <section
       id="banner"
       className={props.classes.banner}
+      style={{backgroundImage: `url(${props.userData.userData.backgroundImage})`}}
     >
       <Grid container justify="flex-start" alignItems="flex-start">
         <Grid item xs={1} />
         <Grid item xs={6}>
-          <Grid container direction="column" justify="center">
-            <Grid item xs={10}>
-              <Fade in timeout={2000}>
-                <Typography
-                  color="inherit"
-                  variant="h2"
-                  className={props.classes.bannerTitle}
-                >
-                  I am {userName}.
-                </Typography>
-              </Fade>
+          {!props.userData.isLoading && // Only if the banner is not loading, show the texts.
+            <Grid container direction="column" justify="center">
+              <Grid item xs={10}>
+                <Fade in timeout={2000}>
+                  <Typography
+                    color="inherit"
+                    variant="h2"
+                    className={props.classes.bannerTitle}
+                  >
+                    I am {(props.userData.errMess) ? "???" : props.userData.userData.userName}.
+                  </Typography>
+                </Fade>
+              </Grid>
+              <Grid item xs={10}>
+                <Fade in timeout={4000}>
+                  <Typography
+                    color="inherit"
+                    variant="h2"
+                    className={props.classes.bannerSubTitle}
+                  >
+                    I am a {(props.userData.errMess) ? "???" :props.userData.userData.userPosition}.
+                  </Typography>
+                </Fade>
+              </Grid>
             </Grid>
-            <Grid item xs={10}>
-              <Fade in timeout={4000}>
-                <Typography
-                  color="inherit"
-                  variant="h2"
-                  className={props.classes.bannerSubTitle}
-                >
-                  I am a {userPosition}.
-                </Typography>
-              </Fade>
-            </Grid>
-          </Grid>
+          }
         </Grid>
         <Grid item className={props.classes.buttons} xs>
           <Grid
