@@ -14,13 +14,15 @@ import { fetchEducation } from "./redux/actions/education";
 import { fetchExperience } from "./redux/actions/experience";
 
 import { IState, IStateDispatch } from "./redux/store";
+import { fetchPortfolio } from "./redux/actions/portfolio";
 
 const mapStateToProps = (state: IState): IState => {
     return {
         introduction: state.introduction,
         qualification: state.qualification,
         education: state.education,
-        experience: state.experience
+        experience: state.experience,
+        portfolio: state.portfolio
     };
 };
 
@@ -36,7 +38,11 @@ const mapDispatchToProps = (dispatch): IStateDispatch => ({
     },
     fetchExperience: () => {
         dispatch(fetchExperience())
+    },
+    fetchPortfolio: () => {
+        dispatch(fetchPortfolio())
     }
+
 });
 
 interface IApp extends IStateDispatch, IState {}
@@ -46,8 +52,9 @@ function App(props: IApp) {
     React.useEffect(() => {
         props.fetchIntroduction();
         props.fetchQualifications();
-        props.fetchEducation()
-        props.fetchExperience()
+        props.fetchEducation();
+        props.fetchExperience();
+        props.fetchPortfolio();
     }, []);
 
     return (
@@ -59,9 +66,9 @@ function App(props: IApp) {
                 introduction = {props.introduction}
                 qualification = {props.qualification}
                 education = {props.education}
-                experience = {props.experience}
+                experience = {props.experience}                
             />
-            <Portfolio />
+            <Portfolio portfolio = {props.portfolio}/>
             <Footer />
         </div>
     );

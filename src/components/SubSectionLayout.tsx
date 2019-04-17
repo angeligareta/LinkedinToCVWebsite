@@ -26,20 +26,19 @@ function DoubleChildrenSubSection(props: ISubSectionLayout) {
       </Typography>
       <Grid
         container
-        spacing={8}
         direction="row"
         alignItems="center"
         justify="center"
       >
-        <Grid item md={1} />
-        <Grid item md={4}>
+        <Grid item lg={3} md={2}/>
+        <Grid item lg md={4} sm={6} xs={10}>
           {props.children[0]}
         </Grid>
-        <Grid item md={4}>
+        <Grid item lg md={4} sm={6} xs={10}>
           {props.children[1]}
         </Grid>
 
-        <Grid item md={1} />
+        <Grid item lg={3} md={2}/>
       </Grid>
     </div>
   );

@@ -1,9 +1,7 @@
 import React from 'react';
 import { Grid, createStyles, Typography, ButtonBase, withStyles, WithStyles } from "@material-ui/core";
 import SectionLayout from "../components/SectionLayout";
-
-// TODO: Change to store
-import { LATEST_PROJECTS } from "../assets/latest-projects";
+import { IState } from '../redux/store';
 
 /**
  * Structure of a project contained in LATEST_PROJECTS variable.
@@ -98,7 +96,9 @@ const styles = theme => createStyles({
   }
 });
 
-interface IPortfolio extends WithStyles<typeof styles> {}
+interface IPortfolio extends WithStyles<typeof styles> {
+  portfolio: IState["portfolio"]
+}
 
 /**
  * Component that renders all the Latest projects of the portfolio,
@@ -106,10 +106,10 @@ interface IPortfolio extends WithStyles<typeof styles> {}
  *
  * It gets all the data for the buttons from LATEST_PROJECTS dataset.
  *
- * @param param0
+ * @param props
  */
 function ProjectsView(props: IPortfolio) {
-  const latestProjects = LATEST_PROJECTS.map((latestProject: IProject) => (
+  const latestProjects = props.portfolio.portfolio.map((latestProject: IProject) => (
     <Grid item lg={5} md={5} sm={8} xs={10}>
       <ButtonBase
         focusRipple
@@ -168,7 +168,7 @@ function Portfolio(props: IPortfolio) {
             Github repository."
       style="secondary"
     >
-      <ProjectsView classes={props.classes} />
+      <ProjectsView {...props} />
     </SectionLayout>
   );
 }

@@ -11,9 +11,9 @@ import { IState } from '../redux/store';
  */
 const styles = theme => createStyles({
   avatar: {
-    margin: 10,
-    width: 250,
-    height: 250,
+    marginLeft: 30,
+    width: 220,
+    height: 220,
     boxShadow: "0px 0px 15px -2px"
   },
   introText: {

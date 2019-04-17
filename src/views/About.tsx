@@ -20,7 +20,12 @@ const styles = theme => createStyles({
   }
 });
 
-interface IAbout extends WithStyles<typeof styles>, IState {}
+interface IAbout extends WithStyles<typeof styles> {
+  introduction: IState["introduction"],
+  qualification: IState["qualification"],
+  education: IState["education"],
+  experience: IState["experience"]
+}
 
 /**
  * Main component that renders a grid container with two text blocks at the left

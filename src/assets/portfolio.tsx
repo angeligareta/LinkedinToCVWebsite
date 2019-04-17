@@ -1,4 +1,4 @@
-export const LATEST_PROJECTS = [
+export const PORTFOLIO = [
   {
     url: "https://www.youtube.com/watch?v=EkHRD6s2q2k",
     imageSrc:
