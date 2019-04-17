@@ -10,7 +10,8 @@ import {
   Typography,
   withStyles,
   createStyles,
-  WithStyles
+  WithStyles,
+  CircularProgress
 } from "@material-ui/core";
 
 import BulletPoint from "@material-ui/icons/ArrowRight";
@@ -67,11 +68,21 @@ function Experience(props: IExperience) {
       </CardContent>
     </Card>
   ));
+
   return (
     <SubSectionLayout title="My Work Experience.">
       <Grid container direction="column" justify="center" alignItems="center">
-        {experienceCards}
-      </Grid>
+        {(props.experience.isLoading) 
+        ? 
+          <CircularProgress size={68}/> 
+        : 
+          (props.experience.errMess)
+          ? 
+            <Typography variant="h4" color="error">{props.experience.errMess}</Typography>
+          :
+            experienceCards
+        }
+      </Grid>    
     </SubSectionLayout>
   );
 }

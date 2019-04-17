@@ -8,7 +8,7 @@ import About from "./views/About";
 import Footer from "./views/Footer";
 import Portfolio from "./views/Portfolio";
 
-import { fetchIntroduction } from "./redux/actions/intro";
+import { fetchIntroduction } from "./redux/actions/introduction";
 import { fetchQualifications } from "./redux/actions/qualification";
 import { fetchEducation } from "./redux/actions/education";
 import { fetchExperience } from "./redux/actions/experience";

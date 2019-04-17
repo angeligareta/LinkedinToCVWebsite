@@ -10,23 +10,28 @@ import { Dispatch } from "react";
 export function replaceExperience(experienceArray: IExperienceState["experience"]): IExperienceAction {
   return {
     type: REPLACE_EXPERIENCE,
-    payload: { experience: experienceArray }
+    payload: { ...experienceInitialState, experience: experienceArray }
   };
 }
 
 export function experienceLoading(): IExperienceAction {
-  return { type: EXPERIENCE_LOADING };
+  return { 
+    type: EXPERIENCE_LOADING,
+    payload: { ...experienceInitialState }
+  };
 }
 
-export function experienceFailed(errmess: string): IExperienceAction {
+export function experienceFailed(errMess: string): IExperienceAction {
   return {
     type: EXPERIENCE_FAILED,
-    payload: errmess
+    payload: { ...experienceInitialState, errMess: errMess }
   };
 }
 
 export function fetchExperience(): (dispatch: Dispatch<IExperienceAction>) => void {
   return function(dispatch: Dispatch<IExperienceAction>) {
+    dispatch(experienceLoading())
+
     setTimeout(() => {
       dispatch(replaceExperience(EXPERIENCE));
     }, 3000);
@@ -34,18 +39,18 @@ export function fetchExperience(): (dispatch: Dispatch<IExperienceAction>) => vo
 }
 
 export interface IExperienceState {
-  experience: Array<any>
+  experience: Array<any>,
+  isLoading: Boolean,
+  errMess: string | null
 } 
 
 export interface IExperienceAction {
   type: string,
-  payload?: IExperienceState | string
+  payload: IExperienceState
 }
 
 export const experienceInitialState: IExperienceState = {
-  experience: []
-}
-
-export function experienceIsError(payload: IExperienceAction["payload"]): payload is string {
-  return (payload instanceof String);
+  experience: [],
+  isLoading: true,
+  errMess: null
 }

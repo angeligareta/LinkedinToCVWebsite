@@ -1,5 +1,5 @@
 import { REPLACE_INTRODUCTION} from "../constants/index";
-import { introductionInitialState, introductionIsError, IIntroductionState, IIntroductionAction } from "../actions/intro";
+import { introductionInitialState, introductionIsError, IIntroductionState, IIntroductionAction } from "../actions/introduction";
 
 export const introductionReducer = (state: IIntroductionState = introductionInitialState, action: IIntroductionAction): IIntroductionState => {
   if (action.type === REPLACE_INTRODUCTION && action.payload && !introductionIsError(action.payload)) {

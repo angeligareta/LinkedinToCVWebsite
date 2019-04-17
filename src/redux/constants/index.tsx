@@ -17,3 +17,5 @@ export const QUALIFICATION_FAILED: string = "QUALIFICATION_FAILED";
 export const REPLACE_PORTFOLIO: string = "REPLACE_PORTFOLIO";
 export const PORTFOLIO_LOADING: string = "PORTFOLIO_LOADING";
 export const PORTFOLIO_FAILED: string = "PORTFOLIO_FAILED";
+
+export const FETCH_ERROR_MESSAGE: string = "ERROR 404: Content not found."

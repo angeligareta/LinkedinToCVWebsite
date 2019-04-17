@@ -3,13 +3,13 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { logger } from "redux-logger";
 
-import { introductionReducer } from "../reducers/intro";
+import { introductionReducer } from "../reducers/introduction";
 import { qualificationReducer } from "../reducers/qualification";
 import { educationReducer } from "../reducers/education";
 import { experienceReducer } from "../reducers/experience";
 import { portfolioReducer } from "../reducers/portfolio";
 
-import { IIntroductionState } from "../actions/intro";
+import { IIntroductionState } from "../actions/introduction";
 import { IQualificationState } from "../actions/qualification";
 import { IEducationState } from "../actions/education";
 import { IExperienceState } from "../actions/experience";
