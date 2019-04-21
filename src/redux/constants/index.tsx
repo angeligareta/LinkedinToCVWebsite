@@ -33,3 +33,10 @@ export const HOME_SECTION_TAG = "home";
 export const ABOUT_SECTION_TAG = "about";
 export const PROJECT_SECTION_TAG = "works";
 export const CONTACT_SECTION_TAG = "contact";
+
+export const HEADER_MENU_LINKS = [
+  HOME_SECTION_TAG,
+  ABOUT_SECTION_TAG,
+  PROJECT_SECTION_TAG,
+  CONTACT_SECTION_TAG
+];

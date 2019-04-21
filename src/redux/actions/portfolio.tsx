@@ -50,8 +50,16 @@ export function fetchPortfolio(): (dispatch: Dispatch<IPortfolioAction>) => void
   };
 }
 
+export interface IProject {
+  url: string;
+  imageSrc: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
 export interface IPortfolioState {
-  portfolio: Array<any>,
+  portfolio: Array<IProject>,
   isLoading: boolean,
   errMess: string | null
 }

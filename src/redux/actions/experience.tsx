@@ -51,8 +51,16 @@ export function fetchExperience(): (dispatch: Dispatch<IExperienceAction>) => vo
   };
 }
 
+export interface IExperience {
+  position: string,
+  company: string,
+  startDate: string,
+  endDate: string,
+  facts: Array<string>
+}
+
 export interface IExperienceState {
-  experience: Array<any>,
+  experience: Array<IExperience>,
   isLoading: Boolean,
   errMess: string | null
 } 

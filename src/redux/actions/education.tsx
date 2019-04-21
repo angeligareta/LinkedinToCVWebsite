@@ -50,8 +50,16 @@ export function fetchEducation(): (dispatch: Dispatch<IEducationAction>) => void
   };
 }
 
+export interface IEducation {
+  school: string,
+  degree: string,
+  startDate: string,
+  endDate: string,
+  facts: Array<string>
+}
+
 export interface IEducationState {
-  education: Array<any>,
+  education: Array<IEducation>,
   isLoading: boolean,
   errMess: string | null
 } 
