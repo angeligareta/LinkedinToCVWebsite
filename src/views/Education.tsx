@@ -18,8 +18,10 @@ import {
 import BulletPoint from "@material-ui/icons/ArrowRight";
 import SubSectionLayout from "../components/SubSectionLayout";
 import { IState } from '../redux/store';
+
+
 /**
- * CSS Syles for Portfolio.
+ * CSS Syles for Education.
  */
 const styles = theme => createStyles({
   education: {},
@@ -36,15 +38,25 @@ const styles = theme => createStyles({
   }
 });
 
+
+/**
+ * Data Structure for the props used in Education component.
+ */
 interface IEducation extends WithStyles<typeof styles> {
   education: IState["education"]
 }
 
+
 /**
- * Main component that renders a grid container with two text blocks at the left
- * and a subcomponent skills at the right.
+ * Contains a set of cards, each one representing a previous education of the user.
+ * The structure of the cards is:
+ * 
+ *  - StartDate and endDate (or present).
+ *  - School studied.
+ *  - Degree studied.
+ *  - List of facts.
  *
- * @param param0
+ * @param props
  */
 function Education(props: IEducation) {
   let educationCards = props.education.education.map(educationObject => (
@@ -94,5 +106,6 @@ function Education(props: IEducation) {
     </SubSectionLayout>
   );
 }
+
 
 export default withStyles(styles)(Education);

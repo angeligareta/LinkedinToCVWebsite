@@ -2,17 +2,8 @@ import React from 'react';
 import { Grid, createStyles, Typography, ButtonBase, withStyles, WithStyles, CircularProgress } from "@material-ui/core";
 import SectionLayout from "../components/SectionLayout";
 import { IState } from '../redux/store';
+import { IProject } from '../redux/actions/portfolio';
 
-/**
- * Structure of a project contained in LATEST_PROJECTS variable.
- */
-export interface IProject {
-  url: string;
-  imageSrc: string;
-  title: string;
-  subtitle: string;
-  description: string;
-}
 
 /**
  * CSS Syles for Portfolio.
@@ -96,15 +87,18 @@ const styles = theme => createStyles({
   }
 });
 
+
+/**
+ * Data Structure for the props used in Portfolio component.
+ */
 interface IPortfolio extends WithStyles<typeof styles> {
   portfolio: IState["portfolio"]
 }
 
+
 /**
- * Component that renders all the Latest projects of the portfolio,
- * each one represented as a button in the Grid container.
- *
- * It gets all the data for the buttons from LATEST_PROJECTS dataset.
+ * Component that renders all the latest projects of the portfolio,
+ * each one represented as a button with CSS in the Grid container.
  *
  * @param props
  */
@@ -150,6 +144,7 @@ function ProjectsView(props: IPortfolio) {
   );
 }
 
+
 /**
  * Main component that represents the portfolio block, containing a title,
  * subtitle and description, followed by the latest projects of the career.
@@ -181,5 +176,6 @@ function Portfolio(props: IPortfolio) {
     </SectionLayout>
   );
 }
+
 
 export default withStyles(styles)(Portfolio);

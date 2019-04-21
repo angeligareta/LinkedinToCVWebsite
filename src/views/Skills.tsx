@@ -3,19 +3,23 @@ import { Grid, Typography, withStyles, createStyles, WithStyles } from "@materia
 
 import SubSectionLayout from "../components/SubSectionLayout";
 
+
 /**
- * CSS Syles for Portfolio.
+ * CSS Syles for Skills.
  */
-const styles = theme => createStyles({
+const styles = theme => createStyles({});
 
-});
 
+/**
+ * Data Structure for the props used in Skills component.
+ */
 interface ISkills extends WithStyles<typeof styles> {}
+
 
 /**
  * TODO
  *
- * @param param0
+ * @param props
  */
 function Skills(props: ISkills) {
   return (
@@ -34,5 +38,6 @@ function Skills(props: ISkills) {
     </SubSectionLayout>
   );
 }
+
 
 export default withStyles(styles)(Skills);

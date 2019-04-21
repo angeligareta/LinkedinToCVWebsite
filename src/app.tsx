@@ -49,8 +49,19 @@ const mapDispatchToProps = (dispatch): IStateDispatch => ({
     }
 });
 
+
+/**
+ * Structure of the main app.
+ */
 interface IApp extends IStateDispatch, IState {}
 
+
+/**
+ * Renders the main sections of the app, 
+ * passing them the props from the redux store.
+ * 
+ * @param props 
+ */
 function App(props: IApp) {
     // Similar to componentDidMount and componentDidUpdate:
     React.useEffect(() => {

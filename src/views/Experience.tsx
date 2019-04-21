@@ -19,7 +19,7 @@ import SubSectionLayout from "../components/SubSectionLayout";
 import { IState } from '../redux/store';
 
 /**
- * CSS Syles for Portfolio.
+ * CSS Syles for Experience.
  */
 const styles = theme => createStyles({
   card: {
@@ -35,15 +35,23 @@ const styles = theme => createStyles({
   }
 });
 
+/**
+ * Data Structure for the props used in Experience component.
+ */
 interface IExperience extends WithStyles<typeof styles> {
   experience: IState["experience"]
 }
 
 /**
- * Main component that renders a grid container with two text blocks at the left
- * and a subcomponent skills at the right.
+ * Contains a set of cards, each one representing a work experience of the user.
+ * The structure of each card is:
+ * 
+ *  - StartDate and endDate (or Present).
+ *  - Position.
+ *  - Company.
+ *  - List of facts of the job.
  *
- * @param param0
+ * @param props
  */
 function Experience(props: IExperience) {
   let experienceCards = props.experience.experience.map(experienceObject => (
@@ -86,5 +94,6 @@ function Experience(props: IExperience) {
     </SubSectionLayout>
   );
 }
+
 
 export default withStyles(styles)(Experience);

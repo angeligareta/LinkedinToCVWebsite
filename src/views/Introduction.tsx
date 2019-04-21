@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Avatar, Grid, Typography, withStyles, createStyles, WithStyles, CircularProgress } from "@material-ui/core";
 
-import { USER_DATA } from "../assets/userData"; // TODO: Change
-
 import SubSectionLayout from "../components/SubSectionLayout";
 import { IState } from '../redux/store';
 
+
 /**
- * CSS Syles for Portfolio.
+ * CSS Syles for Introduction.
  */
 const styles = theme => createStyles({
   avatar: {
@@ -21,11 +20,21 @@ const styles = theme => createStyles({
   }
 });
 
+
+/**
+ * Data Structure for the props used in Introduction component.
+ */
 interface IIntroduction extends WithStyles<typeof styles> {
   introduction: IState["introduction"],
   userData: IState["userData"]
 }
 
+
+/**
+ * Render a simple avatar image fetched from the LinkedIn user profile.
+ * 
+ * @param props 
+ */
 function UserAvatar(props: IIntroduction) {
   return (
     <Grid container direction="column" justify="center" alignItems="center">
@@ -47,6 +56,12 @@ function UserAvatar(props: IIntroduction) {
   );
 }
 
+
+/**
+ * Render a list of paragraphs representing a brief summary of the user.
+ * 
+ * @param props 
+ */
 function UserIntroduction(props: IIntroduction) {
   let introText = props.introduction.introduction.map((introParagraph) => (
     <Typography className={props.classes.introText}variant="body1">{introParagraph}</Typography>
@@ -68,9 +83,9 @@ function UserIntroduction(props: IIntroduction) {
   );
 }
 
+
 /**
- * Main component that renders a grid container with two text blocks at the left
- * and a subcomponent skills at the right.
+ * Displays a user avatar at the left and several introduction paragraphs at the right.
  *
  * @param param0
  */

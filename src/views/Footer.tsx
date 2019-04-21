@@ -4,6 +4,7 @@ import { Grid, Typography, WithStyles, Button, Avatar, createStyles } from "@mat
 import indigo from "@material-ui/core/colors/indigo";
 import { IState } from '../redux/store';
 
+
 /**
  * CSS Syles for Footer.
  */
@@ -28,8 +29,21 @@ const styles = theme => createStyles({
   }
 });
 
-function UserSocialNetworks(props: IFooter) {
 
+/**
+ * Data Structure for the props used in Footer component.
+ */
+interface IFooter extends WithStyles<typeof styles> {
+  userData: IState["userData"]
+}
+
+
+/**
+ * List of social networks of the user. For each one it shows the name and optionally an icon.
+ * 
+ * @param props 
+ */
+function UserSocialNetworks(props: IFooter) {
   let socialNetworks = props.userData.userData.userSocialNetworks.map(socialNetwork => (
     <Grid item>            
       <Button variant="contained" className={props.classes.socialNetworkButton} href={socialNetwork.link}>
@@ -53,11 +67,9 @@ function UserSocialNetworks(props: IFooter) {
   );
 }
 
-interface IFooter extends WithStyles<typeof styles> {
-  userData: IState["userData"]
-}
+
 /**
- * Simple footer with two text boxes inside.
+ * Footer that contains a list of social networks of the user and a copyright text.
  *
  * @param param0
  */
@@ -75,5 +87,6 @@ function Footer(props: IFooter) {
     </section>
   );
 }
+
 
 export default withStyles(styles)(Footer);

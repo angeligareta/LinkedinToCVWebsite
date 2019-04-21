@@ -1,14 +1,8 @@
 import * as React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import { Link, AppBar, Toolbar, Avatar, createStyles, WithStyles } from "@material-ui/core";
+import { HEADER_MENU_LINKS } from '../redux/constants';
 
-import { HOME_SECTION_TAG, ABOUT_SECTION_TAG, PROJECT_SECTION_TAG, CONTACT_SECTION_TAG } from '../redux/constants';
-export const HEADER_MENU_LINKS = [
-  HOME_SECTION_TAG,
-  ABOUT_SECTION_TAG,
-  PROJECT_SECTION_TAG,
-  CONTACT_SECTION_TAG
-];
 
 /**
  * CSS Syles for Header.
@@ -27,10 +21,15 @@ const styles = theme => createStyles({
   }
 });
 
-interface IHeaderMenuLinks extends WithStyles<typeof styles> {}
 
 /**
- * Renders the list of links contained in RIGHT_LINKS dataset.
+ * Data Structure for the props used in Header component.
+ */
+interface IHeaderMenuLinks extends WithStyles<typeof styles> {}
+
+
+/**
+ * Renders the list of links contained in HEADER_MENU_LINKS constant.
  *
  * @param param0
  */
@@ -49,8 +48,9 @@ function HeaderMenuLinks(props: IHeaderMenuLinks) {
   return <div> {headerMenuLinks} </div>;
 }
 
+
 /**
- * Contains an App bar with a logo at the left and some links at the right.
+ * Contains a Navigation bar with a logo at the left and some links at the right.
  */
 function Header(props: IHeaderMenuLinks) {
   return (
@@ -65,5 +65,6 @@ function Header(props: IHeaderMenuLinks) {
     </AppBar>
   );
 }
+
 
 export default withStyles(styles)(Header);

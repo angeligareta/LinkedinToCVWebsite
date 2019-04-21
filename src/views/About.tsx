@@ -4,14 +4,14 @@ import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import SectionLayout from "../components/SectionLayout";
 
 import Introduction from "./Introduction";
-import Skills from "./Skills";
 import Education from "./Education";
 import Qualifications from "./Qualifications";
 import Experience from "./Experience";
 import { IState } from '../redux/store';
 
+
 /**
- * CSS Syles for Portfolio.
+ * CSS Syles for About.
  */
 const styles = theme => createStyles({
   about: {
@@ -20,6 +20,10 @@ const styles = theme => createStyles({
   }
 });
 
+
+/**
+ * Data Structure for the props used in About component.
+ */
 interface IAbout extends WithStyles<typeof styles> {
   introduction: IState["introduction"],
   qualification: IState["qualification"],
@@ -28,11 +32,16 @@ interface IAbout extends WithStyles<typeof styles> {
   userData: IState["userData"]
 }
 
+
 /**
- * Main component that renders a grid container with two text blocks at the left
- * and a subcomponent skills at the right.
+ * Main component that represents the About section of the app. It contains four subcomponents:
+ * 
+ *  - Introduction: Contains an Avatar image and a brief introduction of the user.
+ *  - Qualifications: List of qualifications of the user.
+ *  - Education: Contains multiple cards, each one representing a previous education of the user.
+ *  - Experience: Contains multiple cards, each one representing a work experience of the user.
  *
- * @param param0
+ * @param props
  */
 function About(props: IAbout) {
   return (
@@ -49,5 +58,6 @@ function About(props: IAbout) {
     </SectionLayout>
   );
 }
+
 
 export default withStyles(styles)(About);

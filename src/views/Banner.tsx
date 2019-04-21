@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Typography, Grid, Button, Fade, Grow, createStyles, withStyles, WithStyles } from "@material-ui/core";
+
 import { PROJECT_SECTION_TAG, ABOUT_SECTION_TAG } from '../redux/constants';
 import { IState } from '../redux/store';
 
+
 /**
- * CSS styles for Banner
+ * CSS styles for Banner.
  *
  * @param theme
  */
@@ -42,13 +44,18 @@ const styles = theme => createStyles({
   }
 });
 
+
+/**
+ * Data Structure for the props used in Banner component.
+ */
 interface IBanner extends WithStyles<typeof styles> {
   userData: IState["userData"]
 }
 
+
 /**
- * Contains two titles at the left and two buttons at the right,
- * all organized with Grid containers.
+ * Banner of the application. It contains the name and the current position of the user,
+ * on top of a background that is fetched from the User LinkedIn.
  *
  * @param props
  */
@@ -122,5 +129,6 @@ function Banner(props: IBanner) {
     </section>
   );
 }
+
 
 export default withStyles(styles)(Banner);

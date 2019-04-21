@@ -18,8 +18,9 @@ import { amber } from "@material-ui/core/colors";
 import SubSectionLayout from "../components/SubSectionLayout";
 import { IState } from '../redux/store';
 
+
 /**
- * CSS Syles for Portfolio.
+ * CSS Syles for Qualifications.
  */
 const styles = theme => createStyles({
   bulletPoint: {
@@ -27,12 +28,18 @@ const styles = theme => createStyles({
   }
 });
 
+
+/**
+ * Data Structure for the props used in Qualifications component.
+ */
 interface IQualifications extends WithStyles<typeof styles> {
   qualification: IState["qualification"]
 }
 
+
 /**
- * TODO
+ * Contains a list of qualifications of the user, fetched from the 
+ * LinkedIn profile of the user if it follows an structure.
  *
  * @param param0
  */
@@ -65,5 +72,6 @@ function Qualifications(props: IQualifications) {
     </SubSectionLayout>
   );
 }
+
 
 export default withStyles(styles)(Qualifications);
