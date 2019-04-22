@@ -26,9 +26,7 @@ import { IState } from '../redux/store';
 const styles = theme => createStyles({
   education: {},
   card: {
-    marginBottom: "20px",
-    width: "100%",
-    minWidth: "100%"
+    marginBottom: "20px"
   },
   bulletPoint: {
     marginRight: "0px"
@@ -61,26 +59,28 @@ interface IEducation extends WithStyles<typeof styles> {
 function Education(props: IEducation) {
   let educationCards = props.education.education.map(educationObject => (
     <Grow in={true} style={{ transformOrigin: "0 0 0", timeout: 1000 }}>
-      <Card raised className={props.classes.card}>
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            {educationObject.startDate + " - "}
-            {educationObject.endDate === "" ? "PRESENT" : educationObject.endDate}
-          </Typography>
-          <Typography variant="h5">{educationObject.school}</Typography>
-          <Typography color="textSecondary">{educationObject.degree}</Typography>
-          <List>
-            {educationObject.facts.map(fact => (
-              <ListItem>
-                <ListItemIcon>
-                  <BulletPoint className={props.classes.bulletPoint} />
-                </ListItemIcon>
-                <ListItemText className={props.classes.cardText}>{fact}</ListItemText>
-              </ListItem>
-            ))}
-          </List>
-        </CardContent>
-      </Card>
+      <Grid item xs={12}>
+        <Card raised className={props.classes.card}>
+          <CardContent>
+            <Typography color="textSecondary" gutterBottom>
+              {educationObject.startDate + " - "}
+              {educationObject.endDate === "" ? "PRESENT" : educationObject.endDate}
+            </Typography>
+            <Typography variant="h5">{educationObject.school}</Typography>
+            <Typography color="textSecondary">{educationObject.degree}</Typography>
+            <List>
+              {educationObject.facts.map(fact => (
+                <ListItem>
+                  <ListItemIcon>
+                    <BulletPoint className={props.classes.bulletPoint} />
+                  </ListItemIcon>
+                  <ListItemText className={props.classes.cardText}>{fact}</ListItemText>
+                </ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
+      </Grid>
     </Grow>
   ));
 
@@ -100,7 +100,7 @@ function Education(props: IEducation) {
           ? 
             <Typography variant="h4" color="error">{props.education.errMess}</Typography>
           :
-          <div>{educationCards}</div>
+          educationCards
         }
       </Grid>
     </SubSectionLayout>

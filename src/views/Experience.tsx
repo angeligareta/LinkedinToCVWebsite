@@ -11,7 +11,8 @@ import {
   withStyles,
   createStyles,
   WithStyles,
-  CircularProgress
+  CircularProgress,
+  Grow
 } from "@material-ui/core";
 
 import BulletPoint from "@material-ui/icons/ArrowRight";
@@ -25,7 +26,7 @@ const styles = theme => createStyles({
   card: {
     marginBottom: "20px",
     width: "100%",
-    minWidth: "30vw",
+    minWidth: "30vw"
   },
   bulletPoint: {
     marginRight: "0px"
@@ -55,26 +56,30 @@ interface IExperience extends WithStyles<typeof styles> {
  */
 function Experience(props: IExperience) {
   let experienceCards = props.experience.experience.map(experienceObject => (
-    <Card raised className={props.classes.card}>
-      <CardContent>
-        <Typography color="textSecondary" gutterBottom>
-          {experienceObject.startDate + " - "}
-          {experienceObject.endDate === "" ? "PRESENT" : experienceObject.endDate}
-        </Typography>
-        <Typography variant="h5">{experienceObject.position}</Typography>
-        <Typography color="textSecondary">{experienceObject.company}</Typography>
-        <List>
-          {experienceObject.facts.map(fact => (
-            <ListItem>
-              <ListItemIcon>
-                <BulletPoint className={props.classes.bulletPoint} />
-              </ListItemIcon>
-              <ListItemText className={props.classes.cardText}>{fact}</ListItemText>
-            </ListItem>
-          ))}
-        </List>
-      </CardContent>
-    </Card>
+    <Grow in={true} style={{ transformOrigin: "0 0 0", timeout: 1000 }}>
+      <Grid item xs={8}>
+        <Card raised className={props.classes.card}>
+          <CardContent>
+            <Typography color="textSecondary" gutterBottom>
+              {experienceObject.startDate + " - "}
+              {experienceObject.endDate === "" ? "PRESENT" : experienceObject.endDate}
+            </Typography>
+            <Typography variant="h5">{experienceObject.position}</Typography>
+            <Typography color="textSecondary">{experienceObject.company}</Typography>
+            <List>
+              {experienceObject.facts.map(fact => (
+                <ListItem>
+                  <ListItemIcon>
+                    <BulletPoint className={props.classes.bulletPoint} />
+                  </ListItemIcon>
+                  <ListItemText className={props.classes.cardText}>{fact}</ListItemText>
+                </ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grow>
   ));
 
   return (
