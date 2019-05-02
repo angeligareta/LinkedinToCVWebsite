@@ -34,15 +34,15 @@ visual representation of your introduction, education work experience, projects 
 
 ## UI Demo
 <p align="center" >
-  <img src="https://github.com/angeligareta/SaferAuto/blob/master/res/screenshot_1.png" />
+  <img src="https://github.com/angeligareta/LinkedinToCVWebsite/blob/master/res/screenshot_1.png" />
 </p>
 </hr>
 <p align="center" >
-  <img src="https://github.com/angeligareta/SaferAuto/blob/master/res/screenshot_2.png" />
+  <img src="https://github.com/angeligareta/LinkedinToCVWebsite/blob/master/res/screenshot_2.png" />
 </p>
 </hr>
 <p align="center" >
-  <img src="https://github.com/angeligareta/SaferAuto/blob/master/res/screenshot_3.png" />
+  <img src="https://github.com/angeligareta/LinkedinToCVWebsite/blob/master/res/screenshot_3.png" />
 </p>
 
 ## References
