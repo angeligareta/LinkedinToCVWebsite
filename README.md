@@ -5,20 +5,9 @@
   <a href="https://github.com/angeligareta/LinkedinToCVWebsite/blob/master/LICENSE">
     <img alt="GitHub" src="https://img.shields.io/github/license/angeligareta/LinkedinToCVWebsite.svg?style=for-the-badge">
   </a>
-  <a href="https://github.com/ellerbrock/open-source-badges/">
-    <img alt="Website" src="https://badges.frapsoft.com/os/v1/open-source-175x29.png?v=103">
-  </a>
 </p>
 
-<p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#author">Author</a> •
-  <a href="#license">License</a>
-</p>
-
-
-Tool that creates a React CV website that displays your LinkedIn information in a prettier and more organized way.
+Tool that aims to create a React CV website that displays your LinkedIn information in a prettier and more organized way.
 The idea is to keep all the professional information in one place and use this data in other places to have a more
 visual representation of your introduction, education work experience, projects and so on.
 
@@ -29,7 +18,7 @@ visual representation of your introduction, education work experience, projects 
 * Displays user work experience. ✔️
 * Displays user last projects. ✔️
 * Displays footer with social networks. ✔️
-* Fetch all the previous information from LinkedIn. *[work in progress]*
+* Fetch all the previous information from LinkedIn. *[work in progress, not possible for the moment because of LinkedIn API restrictions]*
 * Allow external data not found in LinkedIn, such as social networks, projects' thumbnails... ✔️
 
 ## UI Demo
@@ -50,7 +39,11 @@ visual representation of your introduction, education work experience, projects 
 * **LinkedIn Rest API:** [https://developer.linkedin.com/docs/rest-api#](https://developer.linkedin.com/docs/rest-api# ) 
 
 ## Author
-[**Ángel Igareta**](https://github.com/angeligareta) - Computer Engineering Student
-
-## License
-This project is licensed under the **[MIT License](LICENSE)**
+<p align="center">
+  <a href="https://angeligareta.com" alt="Angel Igareta" target="_blank">
+    <img
+      style="max-width: 420px"
+      src="https://lh3.googleusercontent.com/d/1a8GtvbvSP-kPeUBbFue3xuYZIMffFvFW=w600"
+    />
+  </a>
+</p>
