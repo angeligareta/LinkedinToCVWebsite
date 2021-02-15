@@ -1,5 +1,5 @@
 <h1 align="center"> LinkedinToCVWebsite </h1>
-<h4 align="center"> Retrieves data from your LinkedIn and creates a customized professional online CV for you. </h4>
+<h4 align="center"> Retrieves data from your LinkedIn and creates a customized professional online CV for you </h4>
 
 <p align="center">
   <a href="https://github.com/angeligareta/LinkedinToCVWebsite/blob/master/LICENSE">
